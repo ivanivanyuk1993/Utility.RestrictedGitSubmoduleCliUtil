@@ -1,4 +1,4 @@
-namespace GetListOfDirectSubmodulesAsyncProviderNS;
+namespace GitSubmoduleInfoNS;
 
 public class GitSubmoduleInfo
 {
