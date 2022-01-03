@@ -7,8 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\GetListOfAccessibleGitSubmodulesAsyncProviderNS\GetListOfAccessibleGitSubmodulesAsyncProviderNS.csproj" />
+      <ProjectReference Include="..\GetListOfDirectSubmodulesAsyncProviderNS\GetListOfDirectSubmodulesAsyncProviderNS.csproj" />
       <ProjectReference Include="..\GitmodulesFileNameProviderNS\GitmodulesFileNameProviderNS.csproj" />
-      <ProjectReference Include="..\GitSubmoduleInfoNS\GitSubmoduleInfoNS.csproj" />
     </ItemGroup>
 
 </Project>

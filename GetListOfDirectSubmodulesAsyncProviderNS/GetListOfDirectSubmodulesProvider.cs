@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using GitmodulesFileNameProviderNS;
 using GitSubmoduleInfoNS;
 
 namespace GetListOfDirectSubmodulesAsyncProviderNS;
@@ -17,7 +18,7 @@ public static class GetListOfDirectSubmodulesAsyncProvider
     {
         var gitModulesFilePath = Path.Combine(
             path1: gitRootDirectoryInfo.FullName,
-            path2: ".gitmodules"
+            path2: GitmodulesFileNameProvider.GitmodulesFileName
         );
 
         var gitModulesTextContent = await File.ReadAllTextAsync(
