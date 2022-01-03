@@ -14,7 +14,9 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
     /// <summary>
     ///     Sometimes git provider doesn't answer, hence we need to retry some times
     /// </summary>
-    private const uint RetryCount = 3;
+    private const uint RetryCount = 5;
+
+    private static readonly TimeSpan RetryTimeout = TimeSpan.FromMilliseconds(value: 200);
 
     public static async Task<GitSubmoduleInfo[]> GetListOfAccessibleGitSubmodulesAsync(
         IEnumerable<GitSubmoduleInfo> gitSubmoduleInfoList,
@@ -25,10 +27,10 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
         var gitSubmoduleInfoAndIsAccessibleEnumerable = gitSubmoduleInfoList
             .Select(selector: async gitSubmoduleInfo =>
             {
-                var isSuccessfulCliExitCode = false;
+                bool isSuccessfulCliExitCode;
 
                 var retriesLeft = RetryCount;
-                while (retriesLeft > 0)
+                while (true)
                 {
                     isSuccessfulCliExitCode =(
                         await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
@@ -43,7 +45,17 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
                         break;
                     }
 
-                    --retriesLeft;
+                    if (--retriesLeft != 0)
+                    {
+                        await Task.Delay(
+                            delay: RetryTimeout,
+                            cancellationToken: cancellationToken
+                        );
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
 
                 return new
