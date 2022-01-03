@@ -14,9 +14,9 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
     /// <summary>
     ///     Sometimes git provider(github) doesn't answer, hence we need to retry some times
     /// </summary>
-    private const uint RetryCount = 3;
+    private const uint RetryCount = 10;
 
-    private static readonly TimeSpan RetryTimeout = TimeSpan.FromMilliseconds(value: 5e3);
+    private static readonly TimeSpan RetryTimeout = TimeSpan.FromMilliseconds(value: 1e3);
 
     public static async Task<GitSubmoduleInfo[]> GetListOfAccessibleGitSubmodulesAsync(
         IEnumerable<GitSubmoduleInfo> gitSubmoduleInfoList,
