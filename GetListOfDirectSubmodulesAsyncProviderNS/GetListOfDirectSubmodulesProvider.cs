@@ -1,14 +1,14 @@
 ﻿using System.Text.RegularExpressions;
 using GitmodulesFileNameProviderNS;
 using GitSubmoduleInfoNS;
-using NewLineRegexPatternProviderNS;
+using NormalizeLineBreaksProviderNS;
 
 namespace GetListOfDirectSubmodulesAsyncProviderNS;
 
 public static class GetListOfDirectSubmodulesAsyncProvider
 {
     private static readonly Regex ListOfDirectSubmodulesRegex = new(
-        pattern: $"\\[submodule \"(.+)\"\\]{NewLineRegexPatternProvider.NewLineRegexPattern}\\tpath = (.+){NewLineRegexPatternProvider.NewLineRegexPattern}\\turl = (.+)",
+        pattern: "\\[submodule \"(.+)\"\\]\\n\\tpath = (.+)\\n\\turl = (.+)",
         options: RegexOptions.ExplicitCapture & RegexOptions.Singleline
     );
 
@@ -27,7 +27,7 @@ public static class GetListOfDirectSubmodulesAsyncProvider
             cancellationToken: cancellationToken
         );
 
-        var matchCollection = ListOfDirectSubmodulesRegex.Matches(input: gitModulesTextContent);
+        var matchCollection = ListOfDirectSubmodulesRegex.Matches(input: gitModulesTextContent.NormalizeLineBreaks());
 
         return matchCollection
             .Select(selector: match => new GitSubmoduleInfo(

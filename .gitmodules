@@ -13,6 +13,6 @@
 [submodule "Dependencies/CopyDirectoryAsyncProvider"]
 	path = Dependencies/CopyDirectoryAsyncProvider
 	url = git@github.com:ivanivanyuk1993/UtilDotnet.CopyDirectoryAsyncProvider.git
-[submodule "Dependencies/NewLineRegexPatternProvider"]
-	path = Dependencies/NewLineRegexPatternProvider
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.NewLineRegexPatternProvider.git
+[submodule "Dependencies/NormalizeLineBreaksProvider"]
+	path = Dependencies/NormalizeLineBreaksProvider
+	url = git@github.com:ivanivanyuk1993/UtilDotnet.NormalizeLineBreaksProvider.git
