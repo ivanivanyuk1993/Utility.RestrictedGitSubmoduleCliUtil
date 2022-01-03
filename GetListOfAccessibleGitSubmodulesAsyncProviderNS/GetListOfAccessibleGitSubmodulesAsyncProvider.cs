@@ -16,7 +16,7 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
     /// </summary>
     private const uint RetryCount = 5;
 
-    private static readonly TimeSpan RetryTimeout = TimeSpan.FromMilliseconds(value: 200);
+    private static readonly TimeSpan RetryTimeout = TimeSpan.FromMilliseconds(value: 1e3);
 
     public static async Task<GitSubmoduleInfo[]> GetListOfAccessibleGitSubmodulesAsync(
         IEnumerable<GitSubmoduleInfo> gitSubmoduleInfoList,
