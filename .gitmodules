@@ -10,3 +10,6 @@
 [submodule "Dependencies/GetJsonDateProvider"]
 	path = Dependencies/GetJsonDateProvider
 	url = git@github.com:ivanivanyuk1993/UtilDotnet.GetJsonDateProvider.git
+[submodule "Dependencies/CopyDirectoryAsyncProvider"]
+	path = Dependencies/CopyDirectoryAsyncProvider
+	url = git@github.com:ivanivanyuk1993/UtilDotnet.CopyDirectoryAsyncProvider.git
