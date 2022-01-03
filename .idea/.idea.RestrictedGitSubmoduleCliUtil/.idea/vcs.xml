@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/Dependencies/CopyDirectoryAsyncProvider" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Dependencies/ExecuteCliCommandAsyncProvider" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Dependencies/GetJsonDateProvider" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Dependencies/NewLineRegexPatternProvider" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Dependencies/RunCliTaskProvider" vcs="Git" />
   </component>
 </project>

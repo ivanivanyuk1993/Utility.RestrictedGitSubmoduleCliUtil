@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Dependencies\NewLineRegexPatternProvider\NewLineRegexPatternProviderNS\NewLineRegexPatternProviderNS.csproj" />
       <ProjectReference Include="..\GitmodulesFileNameProviderNS\GitmodulesFileNameProviderNS.csproj" />
       <ProjectReference Include="..\GitSubmoduleInfoNS\GitSubmoduleInfoNS.csproj" />
     </ItemGroup>
