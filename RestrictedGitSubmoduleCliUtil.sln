@@ -4,6 +4,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetListOfDirectSubmodulesAs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetListOfDirectSubmodulesAsyncProviderTestNS", "GetListOfDirectSubmodulesAsyncProviderTestNS\GetListOfDirectSubmodulesAsyncProviderTestNS.csproj", "{CB2001A0-361A-472E-9A74-7D96B1689C97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetListOfAccessibleGitSubmodulesAsyncProviderNS", "GetListOfAccessibleGitSubmodulesAsyncProviderNS\GetListOfAccessibleGitSubmodulesAsyncProviderNS.csproj", "{983961D7-B360-485D-96AD-67908DD1451D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetListOfAccessibleGitSubmodulesAsyncProviderTestNS", "GetListOfAccessibleGitSubmodulesAsyncProviderTestNS\GetListOfAccessibleGitSubmodulesAsyncProviderTestNS.csproj", "{CBB85863-70AF-4F6F-A8DF-E770586DB5B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitmodulesFileNameProviderNS", "GitmodulesFileNameProviderNS\GitmodulesFileNameProviderNS.csproj", "{B80BF56B-965B-42FF-85E3-E793F125CD8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitSubmoduleInfoNS", "GitSubmoduleInfoNS\GitSubmoduleInfoNS.csproj", "{28D05E19-F378-4BC3-90CC-09FCEE2F140B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitSubmoduleInitAccessibleAsyncProviderNS", "GitSubmoduleInitAccessibleAsyncProviderNS\GitSubmoduleInitAccessibleAsyncProviderNS.csproj", "{76407C27-ECDA-4938-98AC-F7C6E4F13A62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitSubmoduleInitAccessibleCli", "GitSubmoduleInitAccessibleCli\GitSubmoduleInitAccessibleCli.csproj", "{2DEC4B43-7E6A-43AA-BDC9-93BB31782D16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecuteCliCommandAsyncProviderNS", "Dependencies\ExecuteCliCommandAsyncProvider\ExecuteCliCommandAsyncProviderNS\ExecuteCliCommandAsyncProviderNS.csproj", "{0C14846C-7B6C-48F5-B9FB-B1DD6E02D236}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{82E91AE0-E4AC-404C-B03A-3793F8AF0534}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExecuteCliCommandAsyncProvider", "ExecuteCliCommandAsyncProvider", "{B90C7A83-E54C-4565-B004-2758533A5BA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CliExitCodeProvider", "CliExitCodeProvider", "{770F7032-D45D-4626-BB4F-2F62FDDB9EC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CliExitCodeProviderNS", "Dependencies\CliExitCodeProvider\CliExitCodeProviderNS\CliExitCodeProviderNS.csproj", "{0D9D5094-9FD2-4E05-A8AE-C989FCCBA12C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RunCliTaskProvider", "RunCliTaskProvider", "{48B15E15-0354-4B83-B5C4-B65DE41156C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunCliTaskProviderNS", "Dependencies\RunCliTaskProvider\RunCliTaskProviderNS\RunCliTaskProviderNS.csproj", "{7E9BB2FB-BFA3-44A8-8627-9BE963836823}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GetJsonDateProvider", "GetJsonDateProvider", "{33ED519A-8CF2-43B4-A771-E3984B7F131E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetJsonDateProviderNS", "Dependencies\GetJsonDateProvider\GetJsonDateProviderNS\GetJsonDateProviderNS.csproj", "{D64958F6-7CEB-4B1D-A412-32899F468736}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +48,55 @@ Global
 		{CB2001A0-361A-472E-9A74-7D96B1689C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB2001A0-361A-472E-9A74-7D96B1689C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB2001A0-361A-472E-9A74-7D96B1689C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{983961D7-B360-485D-96AD-67908DD1451D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{983961D7-B360-485D-96AD-67908DD1451D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{983961D7-B360-485D-96AD-67908DD1451D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{983961D7-B360-485D-96AD-67908DD1451D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB85863-70AF-4F6F-A8DF-E770586DB5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB85863-70AF-4F6F-A8DF-E770586DB5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB85863-70AF-4F6F-A8DF-E770586DB5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB85863-70AF-4F6F-A8DF-E770586DB5B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B80BF56B-965B-42FF-85E3-E793F125CD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B80BF56B-965B-42FF-85E3-E793F125CD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B80BF56B-965B-42FF-85E3-E793F125CD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B80BF56B-965B-42FF-85E3-E793F125CD8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D05E19-F378-4BC3-90CC-09FCEE2F140B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D05E19-F378-4BC3-90CC-09FCEE2F140B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D05E19-F378-4BC3-90CC-09FCEE2F140B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D05E19-F378-4BC3-90CC-09FCEE2F140B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76407C27-ECDA-4938-98AC-F7C6E4F13A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76407C27-ECDA-4938-98AC-F7C6E4F13A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76407C27-ECDA-4938-98AC-F7C6E4F13A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76407C27-ECDA-4938-98AC-F7C6E4F13A62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DEC4B43-7E6A-43AA-BDC9-93BB31782D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DEC4B43-7E6A-43AA-BDC9-93BB31782D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DEC4B43-7E6A-43AA-BDC9-93BB31782D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DEC4B43-7E6A-43AA-BDC9-93BB31782D16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C14846C-7B6C-48F5-B9FB-B1DD6E02D236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C14846C-7B6C-48F5-B9FB-B1DD6E02D236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C14846C-7B6C-48F5-B9FB-B1DD6E02D236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C14846C-7B6C-48F5-B9FB-B1DD6E02D236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9D5094-9FD2-4E05-A8AE-C989FCCBA12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9D5094-9FD2-4E05-A8AE-C989FCCBA12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9D5094-9FD2-4E05-A8AE-C989FCCBA12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9D5094-9FD2-4E05-A8AE-C989FCCBA12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9BB2FB-BFA3-44A8-8627-9BE963836823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9BB2FB-BFA3-44A8-8627-9BE963836823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9BB2FB-BFA3-44A8-8627-9BE963836823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9BB2FB-BFA3-44A8-8627-9BE963836823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D64958F6-7CEB-4B1D-A412-32899F468736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64958F6-7CEB-4B1D-A412-32899F468736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64958F6-7CEB-4B1D-A412-32899F468736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D64958F6-7CEB-4B1D-A412-32899F468736}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B90C7A83-E54C-4565-B004-2758533A5BA3} = {82E91AE0-E4AC-404C-B03A-3793F8AF0534}
+		{0C14846C-7B6C-48F5-B9FB-B1DD6E02D236} = {B90C7A83-E54C-4565-B004-2758533A5BA3}
+		{770F7032-D45D-4626-BB4F-2F62FDDB9EC5} = {82E91AE0-E4AC-404C-B03A-3793F8AF0534}
+		{0D9D5094-9FD2-4E05-A8AE-C989FCCBA12C} = {770F7032-D45D-4626-BB4F-2F62FDDB9EC5}
+		{48B15E15-0354-4B83-B5C4-B65DE41156C9} = {82E91AE0-E4AC-404C-B03A-3793F8AF0534}
+		{7E9BB2FB-BFA3-44A8-8627-9BE963836823} = {48B15E15-0354-4B83-B5C4-B65DE41156C9}
+		{33ED519A-8CF2-43B4-A771-E3984B7F131E} = {82E91AE0-E4AC-404C-B03A-3793F8AF0534}
+		{D64958F6-7CEB-4B1D-A412-32899F468736} = {33ED519A-8CF2-43B4-A771-E3984B7F131E}
 	EndGlobalSection
 EndGlobal

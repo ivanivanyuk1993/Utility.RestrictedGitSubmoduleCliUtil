@@ -1,0 +1,12 @@
+[submodule "Dependencies/ExecuteCliCommandAsyncProvider"]
+	path = Dependencies/ExecuteCliCommandAsyncProvider
+	url = git@github.com:ivanivanyuk1993/UtilDotnet.ExecuteCliCommandAsyncProvider.git
+[submodule "Dependencies/CliExitCodeProvider"]
+	path = Dependencies/CliExitCodeProvider
+	url = git@github.com:ivanivanyuk1993/UtilDotnet.CliExitCodeProvider.git
+[submodule "Dependencies/RunCliTaskProvider"]
+	path = Dependencies/RunCliTaskProvider
+	url = git@github.com:ivanivanyuk1993/UtilDotnet.RunCliTaskProvider.git
+[submodule "Dependencies/GetJsonDateProvider"]
+	path = Dependencies/GetJsonDateProvider
+	url = git@github.com:ivanivanyuk1993/UtilDotnet.GetJsonDateProvider.git

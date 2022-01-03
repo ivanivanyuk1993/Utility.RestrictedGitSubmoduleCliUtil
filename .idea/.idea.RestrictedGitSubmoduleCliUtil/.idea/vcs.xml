@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Dependencies/CliExitCodeProvider" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Dependencies/ExecuteCliCommandAsyncProvider" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Dependencies/GetJsonDateProvider" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Dependencies/RunCliTaskProvider" vcs="Git" />
   </component>
 </project>
