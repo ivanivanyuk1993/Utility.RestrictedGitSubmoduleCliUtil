@@ -1,6 +1,6 @@
 ﻿using System.CommandLine;
 using System.Text.RegularExpressions;
-using ExecuteCliCommandAsyncProviderNS;
+using GetGitRepositoryUrlAsyncProviderNS;
 using GitmodulesFileNameProviderNS;
 using GitSubmoduleInfoNS;
 using NormalizeLineBreaksProviderNS;
@@ -25,14 +25,11 @@ public static class GetListOfDirectSubmodulesAsyncProvider
             path2: GitmodulesFileNameProvider.GitmodulesFileName
         );
 
-        var parentUrl =
-        (
-            await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
-                cliCommandText: $"git -C \"{gitRootDirectoryInfo.FullName}\" config --get remote.origin.url",
-                console: console,
-                cancellationToken: cancellationToken
-            )
-        ).StandardOutputText;
+        var parentUrl = await GetGitRepositoryUrlAsyncProvider.GetGitRepositoryUrlAsync(
+            console: console,
+            directoryInfo: gitRootDirectoryInfo,
+            cancellationToken: cancellationToken
+        );
 
         var gitModulesTextContent = await File.ReadAllTextAsync(
             path: gitModulesFilePath,
