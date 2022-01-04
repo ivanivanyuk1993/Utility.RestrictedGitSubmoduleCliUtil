@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.CommandLine;
+using System.Text.RegularExpressions;
+using ExecuteCliCommandAsyncProviderNS;
 using GitmodulesFileNameProviderNS;
 using GitSubmoduleInfoNS;
 using NormalizeLineBreaksProviderNS;
@@ -13,6 +15,7 @@ public static class GetListOfDirectSubmodulesAsyncProvider
     );
 
     public static async Task<GitSubmoduleInfo[]> GetListOfDirectSubmodulesAsync(
+        IConsole console,
         DirectoryInfo gitRootDirectoryInfo,
         CancellationToken cancellationToken
     )
@@ -22,6 +25,15 @@ public static class GetListOfDirectSubmodulesAsyncProvider
             path2: GitmodulesFileNameProvider.GitmodulesFileName
         );
 
+        var parentUrl =
+        (
+            await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
+                cliCommandText: $"git -C \"{gitRootDirectoryInfo.FullName}\" config --get remote.origin.url",
+                console: console,
+                cancellationToken: cancellationToken
+            )
+        ).StandardOutputText;
+
         var gitModulesTextContent = await File.ReadAllTextAsync(
             path: gitModulesFilePath,
             cancellationToken: cancellationToken
@@ -30,11 +42,34 @@ public static class GetListOfDirectSubmodulesAsyncProvider
         var matchCollection = ListOfDirectSubmodulesRegex.Matches(input: gitModulesTextContent.NormalizeLineBreaks());
 
         return matchCollection
-            .Select(selector: match => new GitSubmoduleInfo(
-                path: match.Groups[2].Value,
-                submodule: match.Groups[1].Value,
-                url: match.Groups[3].Value
-            ))
+            .Select(selector: match =>
+            {
+                var urlFromGitmodules = match.Groups[groupnum: 3].Value;
+                var isRelativeUrl =
+                    urlFromGitmodules.StartsWith(value: "./")
+                    ||
+                    urlFromGitmodules.StartsWith(value: "../");
+                return new GitSubmoduleInfo(
+                    path: match.Groups[groupnum: 2].Value,
+                    submodule: match.Groups[groupnum: 1].Value,
+                    absoluteUrl: isRelativeUrl
+                        ? Path.GetRelativePath(
+                            path: Path
+                                .Combine(
+                                    path1: parentUrl,
+                                    path2: urlFromGitmodules
+                                ),
+                            relativeTo: "."
+                        )
+                            // We need it to have correct result in Windows
+                            .Replace(
+                                oldValue: "\\",
+                                newValue: "/"
+                            )
+                        : urlFromGitmodules,
+                    urlFromGitmodules: urlFromGitmodules
+                );
+            })
             .ToArray();
     }
 }

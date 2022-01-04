@@ -35,11 +35,13 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
                 {
                     isSuccessfulCliExitCode =(
                         await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
-                            cliCommandText: $"git ls-remote \"{gitSubmoduleInfo.Url}\"",
+                            cliCommandText: $"git ls-remote \"{gitSubmoduleInfo.AbsoluteUrl}\"",
                             console: console,
                             cancellationToken: cancellationToken
                         )
-                    ).IsSuccessfulCliExitCode();
+                    )
+                        .ExitCode
+                        .IsSuccessfulCliExitCode();
 
                     if (isSuccessfulCliExitCode)
                     {
@@ -49,7 +51,7 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
                     if (--triesLeft != 0)
                     {
                         console.Out.WriteLine(
-                            value: $"{nameof(triesLeft)} for url `{gitSubmoduleInfo.Url}`: {triesLeft}"
+                            value: $"{nameof(triesLeft)} for url `{gitSubmoduleInfo.AbsoluteUrl}`: {triesLeft}"
                         );
                         await Task.Delay(
                             delay: RetryTimeout,

@@ -1,4 +1,5 @@
 using System;
+using System.CommandLine.IO;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -15,14 +16,16 @@ public class GetListOfDirectSubmodulesAsyncProviderTest
     public async Task TestMethod1()
     {
         var cancellationToken = CancellationToken.None;
+        var systemConsole = new SystemConsole();
         var listOfDirectSubmodules = await GetListOfDirectSubmodulesAsyncProvider.GetListOfDirectSubmodulesAsync(
+            console: systemConsole,
             gitRootDirectoryInfo: new DirectoryInfo(path: AppDomain.CurrentDomain.BaseDirectory),
             cancellationToken: cancellationToken
         );
 
         Assert.AreEqual(
             actual: listOfDirectSubmodules.Length,
-            expected: 3
+            expected: 4
         );
 
         var gitSubmoduleInfo = listOfDirectSubmodules.First();
@@ -36,7 +39,7 @@ public class GetListOfDirectSubmodulesAsyncProviderTest
             expected: "SpinLockUtil"
         );
         Assert.AreEqual(
-            actual: gitSubmoduleInfo.Url,
+            actual: gitSubmoduleInfo.AbsoluteUrl,
             expected: "git@github.com:ivanivanyuk1993/UtilDotnet.SpinLockUtil.git"
         );
 
@@ -50,7 +53,7 @@ public class GetListOfDirectSubmodulesAsyncProviderTest
             expected: "ShardedQueue"
         );
         Assert.AreEqual(
-            actual: gitSubmoduleInfo.Url,
+            actual: gitSubmoduleInfo.AbsoluteUrl,
             expected: "git@github.com:ivanivanyuk1993/UtilDotnet.ShardedQueue.git"
         );
 
@@ -64,7 +67,11 @@ public class GetListOfDirectSubmodulesAsyncProviderTest
             expected: "AsyncReadWriteLock"
         );
         Assert.AreEqual(
-            actual: gitSubmoduleInfo.Url,
+            actual: gitSubmoduleInfo.AbsoluteUrl,
+            expected: "git@github.com:ivanivanyuk1993/UtilDotnet.AsyncReadWriteLock.git"
+        );
+        Assert.AreEqual(
+            actual: gitSubmoduleInfo.AbsoluteUrl,
             expected: "git@github.com:ivanivanyuk1993/UtilDotnet.AsyncReadWriteLock.git"
         );
     }

@@ -29,7 +29,8 @@ public class GetListOfAccessibleGitSubmodulesAsyncProviderTest
             .Select(url => new GitSubmoduleInfo(
                 path: "Fake Path",
                 submodule: "Fake submodule",
-                url: url
+                absoluteUrl: url,
+                urlFromGitmodules: url
             ))
             .ToArray();
 
@@ -44,8 +45,8 @@ public class GetListOfAccessibleGitSubmodulesAsyncProviderTest
             expected: 1
         );
         Assert.AreEqual(
-            actual: accessibleList.First().Url,
-            expected: gitSubmoduleInfoToTest.First().Url
+            actual: accessibleList.First().AbsoluteUrl,
+            expected: gitSubmoduleInfoToTest.First().AbsoluteUrl
         );
     }
 }

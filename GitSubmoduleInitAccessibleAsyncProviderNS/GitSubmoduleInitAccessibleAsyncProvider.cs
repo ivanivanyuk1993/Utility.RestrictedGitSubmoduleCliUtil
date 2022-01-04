@@ -25,6 +25,7 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
         if (existsGitmodules)
         {
             var gitSubmoduleInfoList = await GetListOfDirectSubmodulesAsyncProvider.GetListOfDirectSubmodulesAsync(
+                console: console,
                 gitRootDirectoryInfo: gitRootDirectoryInfo,
                 cancellationToken: cancellationToken
             );
@@ -48,12 +49,15 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
                     int cliExitCode;
                     do
                     {
-                        cliExitCode = await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
-                            cliCommandText:
-                            $"git -C \"{gitRootDirectoryInfo.FullName}\" submodule update --init --remote -- \"{accessibleGitSubmoduleInfo.Path}\"",
-                            console: console,
-                            cancellationToken: cancellationToken
-                        );
+                        cliExitCode =
+                        (
+                            await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
+                                cliCommandText:
+                                $"git -C \"{gitRootDirectoryInfo.FullName}\" submodule update --init --remote -- \"{accessibleGitSubmoduleInfo.Path}\"",
+                                console: console,
+                                cancellationToken: cancellationToken
+                            )
+                        ).ExitCode;
                     } while (!cliExitCode.IsSuccessfulCliExitCode());
 
                     await GitSubmoduleInitAccessibleAsync(
