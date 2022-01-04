@@ -34,15 +34,18 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
                 cancellationToken: cancellationToken
             );
 
-            var submoduleIniTasks = listOfAccessibleGitSubmodules
+            var cliCommandText =
+                $"git -C \"{gitRootDirectoryInfo.FullName}\" submodule update --init --jobs {Environment.ProcessorCount} --remote -- {string.Join(" ", listOfAccessibleGitSubmodules.Select(accessibleGitSubmodule => $"\"{accessibleGitSubmodule.Path}\""))}";
+
+            await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
+                cliCommandText: cliCommandText,
+                console: console,
+                cancellationToken: cancellationToken
+            );
+
+            var submoduleInitTasks = listOfAccessibleGitSubmodules
                 .Select(async accessibleGitSubmoduleInfo =>
                 {
-                    await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
-                        cliCommandText:
-                        $"git -C \"{gitRootDirectoryInfo.FullName}\" submodule update --init --remote -- \"{accessibleGitSubmoduleInfo.Path}\"",
-                        console: console,
-                        cancellationToken: cancellationToken
-                    );
                     await GitSubmoduleInitAccessibleAsync(
                         gitRootDirectoryInfo: new DirectoryInfo(
                             path: Path.Combine(
@@ -54,7 +57,7 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
                         cancellationToken: cancellationToken
                     );
                 });
-            await Task.WhenAll(tasks: submoduleIniTasks);
+            await Task.WhenAll(tasks: submoduleInitTasks);
         }
     }
 }
