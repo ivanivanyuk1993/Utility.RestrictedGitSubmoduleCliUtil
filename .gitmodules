@@ -1,18 +1,18 @@
 [submodule "Dependencies/ExecuteCliCommandAsyncProvider"]
 	path = Dependencies/ExecuteCliCommandAsyncProvider
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.ExecuteCliCommandAsyncProvider.git
+	url = ../UtilDotnet.ExecuteCliCommandAsyncProvider.git
 [submodule "Dependencies/CliExitCodeProvider"]
 	path = Dependencies/CliExitCodeProvider
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.CliExitCodeProvider.git
+	url = ../UtilDotnet.CliExitCodeProvider.git
 [submodule "Dependencies/RunCliTaskProvider"]
 	path = Dependencies/RunCliTaskProvider
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.RunCliTaskProvider.git
+	url = ../UtilDotnet.RunCliTaskProvider.git
 [submodule "Dependencies/GetJsonDateProvider"]
 	path = Dependencies/GetJsonDateProvider
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.GetJsonDateProvider.git
+	url = ../UtilDotnet.GetJsonDateProvider.git
 [submodule "Dependencies/CopyDirectoryAsyncProvider"]
 	path = Dependencies/CopyDirectoryAsyncProvider
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.CopyDirectoryAsyncProvider.git
+	url = ../UtilDotnet.CopyDirectoryAsyncProvider.git
 [submodule "Dependencies/NormalizeLineBreaksProvider"]
 	path = Dependencies/NormalizeLineBreaksProvider
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.NormalizeLineBreaksProvider.git
+	url = ../UtilDotnet.NormalizeLineBreaksProvider.git
