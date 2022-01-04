@@ -1,4 +1,5 @@
 using System;
+using System.CommandLine.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ public class GetListOfAccessibleGitSubmodulesAsyncProviderTest
 
         var accessibleList = await GetListOfAccessibleGitSubmodulesAsyncProvider.GetListOfAccessibleGitSubmodulesAsync(
             gitSubmoduleInfoList: gitSubmoduleInfoToTest,
+            console: new SystemConsole(),
             cancellationToken: cancellationToken
         );
 

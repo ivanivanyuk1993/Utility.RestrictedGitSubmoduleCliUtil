@@ -28,6 +28,7 @@ rootCommand.SetHandler(
             runCliTaskFunc: cancellationToken2 =>
                 MakeSolutionWithAccessibleCsprojectsAsyncProvider.MakeSolutionWithAccessibleCsprojectsAsync(
                     solutionFileInfo: solutionFileInfo,
+                    console: console,
                     cancellationToken: cancellationToken2
                 ),
             cancellationToken: cancellationToken

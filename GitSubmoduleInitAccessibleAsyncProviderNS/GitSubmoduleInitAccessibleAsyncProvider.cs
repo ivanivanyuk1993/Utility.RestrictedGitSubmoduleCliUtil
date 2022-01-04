@@ -1,4 +1,4 @@
-﻿using System.CommandLine.IO;
+﻿using System.CommandLine;
 using ExecuteCliCommandAsyncProviderNS;
 using GetListOfAccessibleGitSubmodulesAsyncProviderNS;
 using GetListOfDirectSubmodulesAsyncProviderNS;
@@ -10,6 +10,7 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
 {
     public static async Task GitSubmoduleInitAccessibleAsync(
         DirectoryInfo gitRootDirectoryInfo,
+        IConsole console,
         CancellationToken cancellationToken
     )
     {
@@ -29,17 +30,17 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
 
             var listOfAccessibleGitSubmodules = await GetListOfAccessibleGitSubmodulesAsyncProvider.GetListOfAccessibleGitSubmodulesAsync(
                 gitSubmoduleInfoList: gitSubmoduleInfoList,
+                console: console,
                 cancellationToken: cancellationToken
             );
 
-            var systemConsole = new SystemConsole();
             var submoduleIniTasks = listOfAccessibleGitSubmodules
                 .Select(async accessibleGitSubmoduleInfo =>
                 {
                     await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
                         cliCommandText:
                         $"git -C \"{gitRootDirectoryInfo.FullName}\" submodule update --init --remote -- \"{accessibleGitSubmoduleInfo.Path}\"",
-                        console: systemConsole,
+                        console: console,
                         cancellationToken: cancellationToken
                     );
                     await GitSubmoduleInitAccessibleAsync(
@@ -49,6 +50,7 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
                                 path2: accessibleGitSubmoduleInfo.Path
                             )
                         ),
+                        console: console,
                         cancellationToken: cancellationToken
                     );
                 });

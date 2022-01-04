@@ -1,4 +1,5 @@
-﻿using System.CommandLine.IO;
+﻿using System.CommandLine;
+using System.CommandLine.IO;
 using CliExitCodeProviderNS;
 using ExecuteCliCommandAsyncProviderNS;
 using GitSubmoduleInfoNS;
@@ -20,10 +21,10 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
 
     public static async Task<GitSubmoduleInfo[]> GetListOfAccessibleGitSubmodulesAsync(
         IEnumerable<GitSubmoduleInfo> gitSubmoduleInfoList,
+        IConsole console,
         CancellationToken cancellationToken
     )
     {
-        var systemConsole = new SystemConsole();
         var gitSubmoduleInfoAndIsAccessibleEnumerable = gitSubmoduleInfoList
             .Select(selector: async gitSubmoduleInfo =>
             {
@@ -35,7 +36,7 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
                     isSuccessfulCliExitCode =(
                         await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
                             cliCommandText: $"git ls-remote \"{gitSubmoduleInfo.Url}\"",
-                            console: systemConsole,
+                            console: console,
                             cancellationToken: cancellationToken
                         )
                     ).IsSuccessfulCliExitCode();
@@ -45,6 +46,9 @@ public static class GetListOfAccessibleGitSubmodulesAsyncProvider
                         break;
                     }
 
+                    console.Out.WriteLine(
+                        value: $"{nameof(retriesLeft)} for url `{gitSubmoduleInfo.Url}`: {retriesLeft}"
+                    );
                     if (--retriesLeft != 0)
                     {
                         await Task.Delay(

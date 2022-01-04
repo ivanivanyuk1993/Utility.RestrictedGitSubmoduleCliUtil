@@ -1,4 +1,4 @@
-﻿using System.CommandLine.IO;
+﻿using System.CommandLine;
 using CopyDirectoryAsyncProviderNS;
 using ExecuteCliCommandAsyncProviderNS;
 using GetNotAccessibleCsprojectInfoListAsyncProviderNS;
@@ -9,6 +9,7 @@ public static class MakeSolutionWithAccessibleCsprojectsAsyncProvider
 {
     public static async Task MakeSolutionWithAccessibleCsprojectsAsync(
         FileInfo solutionFileInfo,
+        IConsole console,
         CancellationToken cancellationToken
     )
     {
@@ -32,13 +33,12 @@ public static class MakeSolutionWithAccessibleCsprojectsAsyncProvider
 
         if (notAccessibleCsprojectInfoList.Any())
         {
-            var systemConsole = new SystemConsole();
             var cliCommandText =
                 $"dotnet sln \"{solutionWithAccessibleProjectsFileInfo.FullName}\" remove {string.Join(separator: " ", notAccessibleCsprojectInfoList.Select(notAccessibleCsprojectInfo => $"\"{notAccessibleCsprojectInfo.EntryInSolutionFile}\""))}";
 
             await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
                 cliCommandText: cliCommandText,
-                console: systemConsole,
+                console: console,
                 cancellationToken: cancellationToken
             );
         }

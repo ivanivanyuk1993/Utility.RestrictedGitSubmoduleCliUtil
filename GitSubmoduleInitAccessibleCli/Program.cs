@@ -28,6 +28,7 @@ rootCommand.SetHandler(
             runCliTaskFunc: cancellationToken2 =>
                 GitSubmoduleInitAccessibleAsyncProvider.GitSubmoduleInitAccessibleAsync(
                     gitRootDirectoryInfo: gitRootDirectoryInfo,
+                    console: console,
                     cancellationToken: cancellationToken2
                 ),
             cancellationToken: cancellationToken
