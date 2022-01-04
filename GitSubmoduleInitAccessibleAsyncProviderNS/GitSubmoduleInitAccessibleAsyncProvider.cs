@@ -1,4 +1,5 @@
 ﻿using System.CommandLine;
+using CliExitCodeProviderNS;
 using ExecuteCliCommandAsyncProviderNS;
 using GetListOfAccessibleGitSubmodulesAsyncProviderNS;
 using GetListOfDirectSubmodulesAsyncProviderNS;
@@ -34,18 +35,27 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
                 cancellationToken: cancellationToken
             );
 
-            var cliCommandText =
-                $"git -C \"{gitRootDirectoryInfo.FullName}\" submodule update --init --jobs {Environment.ProcessorCount} --remote -- {string.Join(" ", listOfAccessibleGitSubmodules.Select(accessibleGitSubmodule => $"\"{accessibleGitSubmodule.Path}\""))}";
-
-            await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
-                cliCommandText: cliCommandText,
-                console: console,
-                cancellationToken: cancellationToken
-            );
-
             var submoduleInitTasks = listOfAccessibleGitSubmodules
                 .Select(async accessibleGitSubmoduleInfo =>
                 {
+                    // Here we can lock git file, hence we need to retry until success, which is somewhat guaranteed,
+                    // because we checked accessibility previously
+                    // (unless accessibility changes in same period, but it is a rare case and can be handled manually,
+                    // and build/deploy machine will always have all permissions)
+                    //
+                    // Notice that we can run cli command with multiple projects and option `--jobs`, but it
+                    // runs too slow
+                    int cliExitCode;
+                    do
+                    {
+                        cliExitCode = await ExecuteCliCommandAsyncProvider.ExecuteCliCommandAsync(
+                            cliCommandText:
+                            $"git -C \"{gitRootDirectoryInfo.FullName}\" submodule update --init --remote -- \"{accessibleGitSubmoduleInfo.Path}\"",
+                            console: console,
+                            cancellationToken: cancellationToken
+                        );
+                    } while (!cliExitCode.IsSuccessfulCliExitCode());
+
                     await GitSubmoduleInitAccessibleAsync(
                         gitRootDirectoryInfo: new DirectoryInfo(
                             path: Path.Combine(
