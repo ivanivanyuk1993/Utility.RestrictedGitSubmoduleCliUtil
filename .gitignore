@@ -3,3 +3,6 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# It should be gitignored, according to https://stackoverflow.com/a/22235763/9566462
+/RestrictedGitSubmoduleCliUtil.sln.DotSettings.user

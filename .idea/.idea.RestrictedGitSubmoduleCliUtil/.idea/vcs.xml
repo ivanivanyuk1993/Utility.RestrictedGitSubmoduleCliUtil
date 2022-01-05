@@ -9,5 +9,6 @@
     <mapping directory="$PROJECT_DIR$/Dependencies/GetJsonDateProvider" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Dependencies/NormalizeLineBreaksProvider" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Dependencies/RunCliTaskProvider" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Dependencies/ValueOrError" vcs="Git" />
   </component>
 </project>

@@ -25,11 +25,17 @@ public static class GetListOfDirectSubmodulesAsyncProvider
             path2: GitmodulesFileNameProvider.GitmodulesFileName
         );
 
-        var parentUrl = await GetGitRepositoryUrlAsyncProvider.GetGitRepositoryUrlAsync(
+        var parentUrlOrError = await GetGitRepositoryUrlAsyncProvider.GetGitRepositoryUrlAsync(
             console: console,
             directoryInfo: gitRootDirectoryInfo,
             cancellationToken: cancellationToken
         );
+
+        // todo DRY
+        if (parentUrlOrError.IsError)
+        {
+            throw parentUrlOrError.Error;
+        }
 
         var gitModulesTextContent = await File.ReadAllTextAsync(
             path: gitModulesFilePath,
@@ -53,7 +59,7 @@ public static class GetListOfDirectSubmodulesAsyncProvider
                         ? Path.GetRelativePath(
                             path: Path
                                 .Combine(
-                                    path1: parentUrl,
+                                    path1: parentUrlOrError.Value,
                                     path2: urlFromGitmodules
                                 ),
                             relativeTo: "."

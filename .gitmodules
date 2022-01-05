@@ -18,4 +18,7 @@
 	url = ../UtilDotnet.NormalizeLineBreaksProvider.git
 [submodule "Dependencies/GetGitRepositoryUrlAsyncProvider"]
 	path = Dependencies/GetGitRepositoryUrlAsyncProvider
-	url = ../UtilDotnet.GetGitRepositoryUrlAsyncProvider
+	url = ../UtilDotnet.GetGitRepositoryUrlAsyncProvider.git
+[submodule "Dependencies/ValueOrError"]
+	path = Dependencies/ValueOrError
+	url = ../UtilDotnet.ValueOrError.git
