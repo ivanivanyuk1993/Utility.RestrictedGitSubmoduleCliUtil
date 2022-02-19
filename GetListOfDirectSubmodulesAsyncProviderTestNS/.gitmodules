@@ -1,12 +1,12 @@
 [submodule "SpinLockUtil"]
 	path = SpinLockUtil
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.SpinLockUtil.git
+	url = git@github.com:ivanivanyuk1993/Utility.SpinLockUtil.git
 [submodule "ShardedQueue"]
 	path = ShardedQueue
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.ShardedQueue.git
+	url = git@github.com:ivanivanyuk1993/Utility.ShardedQueue.git
 [submodule "AsyncReadWriteLock"]
 	path = AsyncReadWriteLock
-	url = git@github.com:ivanivanyuk1993/UtilDotnet.AsyncReadWriteLock.git
+	url = git@github.com:ivanivanyuk1993/Utility.AsyncReadWriteLock.git
 [submodule "AsyncReadWriteLock"]
 	path = AsyncReadWriteLock
-	url = ../UtilDotnet.AsyncReadWriteLock.git
+	url = ../Utility.AsyncReadWriteLock.git

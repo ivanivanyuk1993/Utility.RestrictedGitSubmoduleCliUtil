@@ -40,7 +40,7 @@ public class GetListOfDirectSubmodulesAsyncProviderTest
         );
         Assert.AreEqual(
             actual: gitSubmoduleInfo.AbsoluteUrl,
-            expected: "git@github.com:ivanivanyuk1993/UtilDotnet.SpinLockUtil.git"
+            expected: "git@github.com:ivanivanyuk1993/Utility.SpinLockUtil.git"
         );
 
         gitSubmoduleInfo = listOfDirectSubmodules.Skip(1).First();
@@ -54,7 +54,7 @@ public class GetListOfDirectSubmodulesAsyncProviderTest
         );
         Assert.AreEqual(
             actual: gitSubmoduleInfo.AbsoluteUrl,
-            expected: "git@github.com:ivanivanyuk1993/UtilDotnet.ShardedQueue.git"
+            expected: "git@github.com:ivanivanyuk1993/Utility.ShardedQueue.git"
         );
 
         gitSubmoduleInfo = listOfDirectSubmodules.Skip(2).First();
@@ -68,11 +68,11 @@ public class GetListOfDirectSubmodulesAsyncProviderTest
         );
         Assert.AreEqual(
             actual: gitSubmoduleInfo.AbsoluteUrl,
-            expected: "git@github.com:ivanivanyuk1993/UtilDotnet.AsyncReadWriteLock.git"
+            expected: "git@github.com:ivanivanyuk1993/Utility.AsyncReadWriteLock.git"
         );
         Assert.AreEqual(
             actual: gitSubmoduleInfo.AbsoluteUrl,
-            expected: "git@github.com:ivanivanyuk1993/UtilDotnet.AsyncReadWriteLock.git"
+            expected: "git@github.com:ivanivanyuk1993/Utility.AsyncReadWriteLock.git"
         );
     }
 }

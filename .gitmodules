@@ -1,24 +1,24 @@
 [submodule "Dependencies/ExecuteCliCommandAsyncProvider"]
 	path = Dependencies/ExecuteCliCommandAsyncProvider
-	url = ../UtilDotnet.ExecuteCliCommandAsyncProvider.git
+	url = ../Utility.ExecuteCliCommandAsyncProvider.git
 [submodule "Dependencies/CliExitCodeProvider"]
 	path = Dependencies/CliExitCodeProvider
-	url = ../UtilDotnet.CliExitCodeProvider.git
+	url = ../Utility.CliExitCodeProvider.git
 [submodule "Dependencies/RunCliTaskProvider"]
 	path = Dependencies/RunCliTaskProvider
-	url = ../UtilDotnet.RunCliTaskProvider.git
+	url = ../Utility.RunCliTaskProvider.git
 [submodule "Dependencies/GetJsonDateProvider"]
 	path = Dependencies/GetJsonDateProvider
-	url = ../UtilDotnet.GetJsonDateProvider.git
+	url = ../Utility.GetJsonDateProvider.git
 [submodule "Dependencies/CopyDirectoryAsyncProvider"]
 	path = Dependencies/CopyDirectoryAsyncProvider
-	url = ../UtilDotnet.CopyDirectoryAsyncProvider.git
+	url = ../Utility.CopyDirectoryAsyncProvider.git
 [submodule "Dependencies/NormalizeLineBreaksProvider"]
 	path = Dependencies/NormalizeLineBreaksProvider
-	url = ../UtilDotnet.NormalizeLineBreaksProvider.git
+	url = ../Utility.NormalizeLineBreaksProvider.git
 [submodule "Dependencies/GetGitRepositoryUrlAsyncProvider"]
 	path = Dependencies/GetGitRepositoryUrlAsyncProvider
-	url = ../UtilDotnet.GetGitRepositoryUrlAsyncProvider.git
+	url = ../Utility.GetGitRepositoryUrlAsyncProvider.git
 [submodule "Dependencies/ValueOrError"]
 	path = Dependencies/ValueOrError
-	url = ../UtilDotnet.ValueOrError.git
+	url = ../Utility.ValueOrError.git
