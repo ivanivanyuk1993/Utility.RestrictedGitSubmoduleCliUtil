@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Dependencies\GetGitRepositoryUrlAsyncProvider\GetGitRepositoryUrlAsyncProviderNS\GetGitRepositoryUrlAsyncProviderNS.csproj" />
-      <ProjectReference Include="..\Dependencies\NormalizeLineBreaksProvider\NormalizeLineBreaksProviderNS\NormalizeLineBreaksProviderNS.csproj" />
+      <ProjectReference Include="..\..\GetGitRepositoryUrlAsyncProvider\GetGitRepositoryUrlAsyncProviderNS\GetGitRepositoryUrlAsyncProviderNS.csproj" />
+      <ProjectReference Include="..\..\NormalizeLineBreaksProvider\NormalizeLineBreaksProviderNS\NormalizeLineBreaksProviderNS.csproj" />
       <ProjectReference Include="..\GitmodulesFileNameProviderNS\GitmodulesFileNameProviderNS.csproj" />
       <ProjectReference Include="..\GitSubmoduleInfoNS\GitSubmoduleInfoNS.csproj" />
     </ItemGroup>

@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Dependencies\CliExitCodeProvider\CliExitCodeProviderNS\CliExitCodeProviderNS.csproj" />
-      <ProjectReference Include="..\Dependencies\ExecuteCliCommandAsyncProvider\ExecuteCliCommandAsyncProviderNS\ExecuteCliCommandAsyncProviderNS.csproj" />
+      <ProjectReference Include="..\..\CliExitCodeProvider\CliExitCodeProviderNS\CliExitCodeProviderNS.csproj" />
+      <ProjectReference Include="..\..\ExecuteCliCommandAsyncProvider\ExecuteCliCommandAsyncProviderNS\ExecuteCliCommandAsyncProviderNS.csproj" />
       <ProjectReference Include="..\GitSubmoduleInfoNS\GitSubmoduleInfoNS.csproj" />
     </ItemGroup>
 

@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Dependencies\CopyDirectoryAsyncProvider\CopyDirectoryAsyncProviderNS\CopyDirectoryAsyncProviderNS.csproj" />
-      <ProjectReference Include="..\Dependencies\ExecuteCliCommandAsyncProvider\ExecuteCliCommandAsyncProviderNS\ExecuteCliCommandAsyncProviderNS.csproj" />
+      <ProjectReference Include="..\..\CopyDirectoryAsyncProvider\CopyDirectoryAsyncProviderNS\CopyDirectoryAsyncProviderNS.csproj" />
+      <ProjectReference Include="..\..\ExecuteCliCommandAsyncProvider\ExecuteCliCommandAsyncProviderNS\ExecuteCliCommandAsyncProviderNS.csproj" />
       <ProjectReference Include="..\GetNotAccessibleCsprojectInfoListAsyncProviderNS\GetNotAccessibleCsprojectInfoListAsyncProviderNS.csproj" />
     </ItemGroup>
 

@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Dependencies\RunCliTaskProvider\RunCliTaskProviderNS\RunCliTaskProviderNS.csproj" />
+      <ProjectReference Include="..\..\RunCliTaskProvider\RunCliTaskProviderNS\RunCliTaskProviderNS.csproj" />
       <ProjectReference Include="..\MakeSolutionWithAccessibleCsprojectsAsyncProviderNS\MakeSolutionWithAccessibleCsprojectsAsyncProviderNS.csproj" />
     </ItemGroup>
 
