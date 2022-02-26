@@ -25,12 +25,19 @@ rootCommand.SetHandler(
             console: console,
             taskName:
             $"Running `{nameof(GitSubmoduleInitAccessibleAsyncProvider.GitSubmoduleInitAccessibleAsync)}` in directory `{gitRootDirectoryInfo.FullName}`",
-            runCliTaskFunc: cancellationToken2 =>
-                GitSubmoduleInitAccessibleAsyncProvider.GitSubmoduleInitAccessibleAsync(
+            runCliTaskFunc: async cancellationToken2 =>
+            {
+                var valueOrError = await GitSubmoduleInitAccessibleAsyncProvider.GitSubmoduleInitAccessibleAsync(
                     gitRootDirectoryInfo: gitRootDirectoryInfo,
                     console: console,
                     cancellationToken: cancellationToken2
-                ),
+                );
+
+                valueOrError.RunActionWithValueOrError(
+                    runActionWithValueFunc: unit => {},
+                    runActionWithErrorFunc: exception => throw exception
+                );
+            },
             cancellationToken: cancellationToken
         );
     },

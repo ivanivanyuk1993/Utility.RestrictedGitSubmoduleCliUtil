@@ -4,6 +4,7 @@ using GetGitRepositoryUrlAsyncProviderNS;
 using GitmodulesFileNameProviderNS;
 using GitSubmoduleInfoNS;
 using NormalizeLineBreaksProviderNS;
+using ValueOrErrorNS;
 
 namespace GetListOfDirectSubmodulesAsyncProviderNS;
 
@@ -14,7 +15,7 @@ public static class GetListOfDirectSubmodulesAsyncProvider
         options: RegexOptions.ExplicitCapture & RegexOptions.Singleline
     );
 
-    public static async Task<GitSubmoduleInfo[]> GetListOfDirectSubmodulesAsync(
+    public static async Task<ValueOrError<GitSubmoduleInfo[], Exception>> GetListOfDirectSubmodulesAsync(
         IConsole console,
         DirectoryInfo gitRootDirectoryInfo,
         CancellationToken cancellationToken
@@ -31,48 +32,48 @@ public static class GetListOfDirectSubmodulesAsyncProvider
             cancellationToken: cancellationToken
         );
 
-        // todo DRY
-        if (parentUrlOrError.IsError)
-        {
-            throw parentUrlOrError.Error;
-        }
-
-        var gitModulesTextContent = await File.ReadAllTextAsync(
-            path: gitModulesFilePath,
-            cancellationToken: cancellationToken
-        );
-
-        var matchCollection = ListOfDirectSubmodulesRegex.Matches(input: gitModulesTextContent.NormalizeLineBreaks());
-
-        return matchCollection
-            .Select(selector: match =>
+        return await parentUrlOrError.RunAsyncActionWithResultWithValueOrError(
+            runAsyncActionWithResultWithValueFunc: async parentUrl =>
             {
-                var urlFromGitmodules = match.Groups[groupnum: 3].Value;
-                var isRelativeUrl =
-                    urlFromGitmodules.StartsWith(value: "./")
-                    ||
-                    urlFromGitmodules.StartsWith(value: "../");
-                return new GitSubmoduleInfo(
-                    path: match.Groups[groupnum: 2].Value,
-                    submodule: match.Groups[groupnum: 1].Value,
-                    absoluteUrl: isRelativeUrl
-                        ? Path.GetRelativePath(
-                            path: Path
-                                .Combine(
-                                    path1: parentUrlOrError.Value,
-                                    path2: urlFromGitmodules
-                                ),
-                            relativeTo: "."
-                        )
-                            // We need it to have correct result in Windows
-                            .Replace(
-                                oldValue: "\\",
-                                newValue: "/"
-                            )
-                        : urlFromGitmodules,
-                    urlFromGitmodules: urlFromGitmodules
+                var gitModulesTextContent = await File.ReadAllTextAsync(
+                    path: gitModulesFilePath,
+                    cancellationToken: cancellationToken
                 );
-            })
-            .ToArray();
+
+                var matchCollection = ListOfDirectSubmodulesRegex.Matches(input: gitModulesTextContent.NormalizeLineBreaks());
+
+                return matchCollection
+                    .Select(selector: match =>
+                    {
+                        var urlFromGitmodules = match.Groups[groupnum: 3].Value;
+                        var isRelativeUrl =
+                            urlFromGitmodules.StartsWith(value: "./")
+                            ||
+                            urlFromGitmodules.StartsWith(value: "../");
+                        return new GitSubmoduleInfo(
+                            path: match.Groups[groupnum: 2].Value,
+                            submodule: match.Groups[groupnum: 1].Value,
+                            absoluteUrl: isRelativeUrl
+                                ? Path.GetRelativePath(
+                                        path: Path
+                                            .Combine(
+                                                path1: parentUrl,
+                                                path2: urlFromGitmodules
+                                            ),
+                                        relativeTo: "."
+                                    )
+                                    // We need it to have correct result in Windows
+                                    .Replace(
+                                        oldValue: "\\",
+                                        newValue: "/"
+                                    )
+                                : urlFromGitmodules,
+                            urlFromGitmodules: urlFromGitmodules
+                        );
+                    })
+                    .ToArray();
+            },
+            runAsyncActionWithResultWithErrorFunc: Task.FromResult
+        );
     }
 }
