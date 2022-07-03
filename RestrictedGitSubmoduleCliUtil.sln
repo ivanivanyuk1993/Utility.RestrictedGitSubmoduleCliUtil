@@ -177,9 +177,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetCallerFilePathProviderNS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GetDebouncedBufferProvider", "GetDebouncedBufferProvider", "{9189BA66-A196-46F9-9B5D-96B4CC01B3FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetDebouncedBufferProviderNS", "..\GetDebouncedBufferProvider\GetDebouncedBufferProviderNS\GetDebouncedBufferProviderNS.csproj", "{50B98289-D0BB-4CBF-87FD-BDACE8116D75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetDebouncedBufferProviderNS", "..\GetDebouncedBufferProvider\dotnet\GetDebouncedBufferProviderNS\GetDebouncedBufferProviderNS.csproj", "{50B98289-D0BB-4CBF-87FD-BDACE8116D75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetDebouncedBufferProviderTestNS", "..\GetDebouncedBufferProvider\GetDebouncedBufferProviderTestNS\GetDebouncedBufferProviderTestNS.csproj", "{75630079-BE0E-41DD-9694-B04F183D2E75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetDebouncedBufferProviderTestNS", "..\GetDebouncedBufferProvider\dotnet\GetDebouncedBufferProviderTestNS\GetDebouncedBufferProviderTestNS.csproj", "{75630079-BE0E-41DD-9694-B04F183D2E75}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GetGitRepositoryUrlAsyncProvider", "GetGitRepositoryUrlAsyncProvider", "{89C73BEF-76D8-4D85-873A-B904C6A76CE5}"
 EndProject
