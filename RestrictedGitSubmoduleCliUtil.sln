@@ -341,7 +341,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemporaryPostgreSqlEmulatin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValueOrError", "ValueOrError", "{8E585F3D-4BC2-4620-B4D5-C0F7E1026BEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueOrErrorNS", "..\ValueOrError\ValueOrErrorNS\ValueOrErrorNS.csproj", "{CD3E6AD5-3911-45DA-AFE8-109629AD8FBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueOrErrorNS", "..\ValueOrError\dotnet\ValueOrErrorNS\ValueOrErrorNS.csproj", "{CD3E6AD5-3911-45DA-AFE8-109629AD8FBD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValueWithLock", "ValueWithLock", "{DF81481F-4961-4166-AA78-259E9B1A202E}"
 EndProject

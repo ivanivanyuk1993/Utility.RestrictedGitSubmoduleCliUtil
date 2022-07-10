@@ -1,5 +1,11 @@
-﻿using System.CommandLine;
+﻿using System;
+using System.CommandLine;
+using System.IO;
+using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using CliExitCodeProviderNS;
 using ExecuteCliCommandAsyncProviderNS;
 using GetListOfAccessibleGitSubmodulesAsyncProviderNS;
@@ -9,6 +15,9 @@ using ValueOrErrorNS;
 
 namespace GitSubmoduleInitAccessibleAsyncProviderNS;
 
+/// <summary>
+///     todo replace <see cref="Task"/>-s with <see cref="IObservable{T}"/>-s
+/// </summary>
 public static class GitSubmoduleInitAccessibleAsyncProvider
 {
     public static async Task<ValueOrError<Unit, Exception>> GitSubmoduleInitAccessibleAsync(
@@ -32,8 +41,8 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
                 cancellationToken: cancellationToken
             );
 
-            return await gitSubmoduleInfoListOrError.RunAsyncActionWithResultWithValueOrError(
-                runAsyncActionWithResultWithValueFunc: async gitSubmoduleInfoList =>
+            return await gitSubmoduleInfoListOrError.RunActionWithResultWithValueOrErrorReactive(
+                gitSubmoduleInfoList => Observable.FromAsync(async () =>
                 {
                     var listOfAccessibleGitSubmodules = await GetListOfAccessibleGitSubmodulesAsyncProvider.GetListOfAccessibleGitSubmodulesAsync(
                         gitSubmoduleInfoList: gitSubmoduleInfoList,
@@ -78,12 +87,12 @@ public static class GitSubmoduleInitAccessibleAsyncProvider
                         });
                     await Task.WhenAll(tasks: submoduleInitTasks);
                     return Unit.Default;
-                },
-                runAsyncActionWithResultWithErrorFunc: Task.FromResult
+                }),
+                Observable.Return
             );
         }
 
-        return ValueOrError<Unit, Exception>.Error(
+        return ValueOrError<Unit, Exception>.CreateError(
             error: new Exception(
                 message: $"File `{GitmodulesFileNameProvider.GitmodulesFileName}` does not exist in `{gitRootDirectoryInfo.FullName}`"
             )

@@ -1,5 +1,11 @@
-﻿using System.CommandLine;
+﻿using System;
+using System.CommandLine;
+using System.IO;
+using System.Linq;
+using System.Reactive.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using GetGitRepositoryUrlAsyncProviderNS;
 using GitmodulesFileNameProviderNS;
 using GitSubmoduleInfoNS;
@@ -8,6 +14,9 @@ using ValueOrErrorNS;
 
 namespace GetListOfDirectSubmodulesAsyncProviderNS;
 
+/// <summary>
+///     todo replace <see cref="Task"/>-s with <see cref="IObservable{T}"/>-s
+/// </summary>
 public static class GetListOfDirectSubmodulesAsyncProvider
 {
     private static readonly Regex ListOfDirectSubmodulesRegex = new(
@@ -32,8 +41,8 @@ public static class GetListOfDirectSubmodulesAsyncProvider
             cancellationToken: cancellationToken
         );
 
-        return await parentUrlOrError.RunAsyncActionWithResultWithValueOrError(
-            runAsyncActionWithResultWithValueFunc: async parentUrl =>
+        return await parentUrlOrError.RunActionWithResultWithValueOrErrorReactive(
+            parentUrl => Observable.FromAsync(async () =>
             {
                 var gitModulesTextContent = await File.ReadAllTextAsync(
                     path: gitModulesFilePath,
@@ -72,8 +81,8 @@ public static class GetListOfDirectSubmodulesAsyncProvider
                         );
                     })
                     .ToArray();
-            },
-            runAsyncActionWithResultWithErrorFunc: Task.FromResult
+            }),
+            Observable.Return
         );
     }
 }
